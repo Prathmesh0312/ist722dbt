@@ -1,0 +1,45 @@
+version: 2
+
+sources:
+  - name: fudgemart_v3
+    database: "RAW"
+    schema: "FUDGEMART_V3"
+
+    tables:
+      - name: "FM_CUSTOMERS"
+        columns:
+          - name: "CUSTOMER_ID"
+            tests:
+              - unique
+
+      - name: "FM_CUSTOMER_CREDITCARDS"
+        columns:
+          - name: "CUSTOMER_ID"
+            tests:
+              - not_null
+          - name: "CREDITCARD_ID"
+            tests:
+              - not_null
+
+      - name: "FM_PRODUCTS"
+        columns:
+          - name: "PRODUCT_ID"
+            tests:
+              - unique
+
+      - name: "FM_CUSTOMER_PRODUCT_REVIEWS"
+        columns:
+          - name: "CUSTOMER_ID"
+            tests:
+              - not_null
+          - name: "PRODUCT_ID"
+            tests:
+              - not_null
+          - name: "REVIEW_DATE"
+            tests:
+              - not_null
+          - name: "REVIEW_STARS"
+            tests:
+              - not_null
+              - accepted_values:
+                  values: [1, 2, 3, 4, 5]
