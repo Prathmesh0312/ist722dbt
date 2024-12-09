@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: fudgemart_v3
+    database: raw
+    schema: fudgemart_v3
+
+    tables:
+      - name: fm_customer_creditcards
+        columns:
+          - name: customer_id
+            tests:
+              - not_null
+          - name: creditcard_id
+            tests:
+              - not_null
+      - name: fm_creditcards
+        columns:
+          - name: creditcard_id
+            tests:
+              - not_null
+          - name: creditcard_number
+          - name: creditcard_exp_date

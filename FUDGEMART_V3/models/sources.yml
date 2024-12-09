@@ -1,6 +1,17 @@
 version: 2
 
 sources:
+  - name: conformed
+    database: raw
+    schema: conformed
+
+    tables:
+      - name: DateDimension
+        columns:
+          - name: DateKey
+            tests:
+              - unique
+
   - name: fudgemart_v3
     database: "RAW"
     schema: "FUDGEMART_V3"
@@ -27,19 +38,4 @@ sources:
             tests:
               - unique
 
-      - name: "FM_CUSTOMER_PRODUCT_REVIEWS"
-        columns:
-          - name: "CUSTOMER_ID"
-            tests:
-              - not_null
-          - name: "PRODUCT_ID"
-            tests:
-              - not_null
-          - name: "REVIEW_DATE"
-            tests:
-              - not_null
-          - name: "REVIEW_STARS"
-            tests:
-              - not_null
-              - accepted_values:
-                  values: [1, 2, 3, 4, 5]
+    
